@@ -1,0 +1,53 @@
+// Campaign Description .ext 
+// Reference: https://community.bistudio.com/wiki/Campaign_Description.ext
+
+
+class NoEndings{ 
+ lost = ; 
+ end1 = ; 
+ end2 = ; 
+ end3 = ; 
+ end4 = ; 
+ end5 = ; 
+ end6 = ; 
+}; 
+
+class MissionDefault : NoEndings{ 
+lives = -1; 
+};
+
+class Mission123 : MissionDefault{
+ "Default Text" 
+};
+
+class Campaign{
+	name = "This Is War ";
+	firstBattle = Chapter1;
+  
+		class Chapter1 : NoEndings {
+		name = Chapter I - Insert Name Here
+		// (Optional) cutscene = cutscene.noe; 
+		// Note that a cutscene is no different to any other 'mission'. It is a mission folder like any other, except there is no Mission class associated with it because it aint, a mission! 
+		firstMission = Mission1;
+		end1 = Chapter2;
+		end2 = Chapter2;
+		end3 = Chapter2;
+		end4 = Chapter2;
+		end5 = Chapter2;
+		end6 = Chapter2;
+		lost = ;                // end the campaign if a mission wants you to
+
+			Class Mission1{
+				noAward=true;
+				end1 = Mission2;            // which mission to play on a successful ending
+				end2 = Mission2;            // which mission to play on a slightly less successful outcome
+				end3 = Mission2;            // etc
+				end4 = Mission2;
+				end5 = Mission2;
+				end6 = Mission2;            //
+				lost = Mission1;            // which mission to replay if you die. this one.
+				template = Mission1.Noe;    // The folder in the Missions/ directory containing the mission
+			};
+		};
+};
+
